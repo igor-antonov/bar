@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<form id="drink-form" th:action="@{/drink}" th:method="post">
+    <h2>добавить в бар:</h2>
+    <div>
+        <label for="name-input">Название:</label>
+        <input id="name-input" name="name" type="text" required="required"/>
+    </div>
+    <div>
+        <label for="amount-input">Количество:</label>
+        <input id="amount-input" name="amount" type="number" required="required"/>
+    </div>
+    <div>
+        <label for="price-input">Цена:</label>
+        <input id="price-input" name="price" type="number" required="required"/>
+    </div>
+        <select name="drinkType" >
+            <option th:each="drinkt : ${drink_types}" th:value="${drinkt.id}" th:text="${drinkt.name}"/>
+        </select>
+    <div>
+        <button type="submit">Добавить</button>
+    </div>
+</form>
+
+<a th:href="@{/drinktype}">Типы напитков</a>
+</body>
+</html>
